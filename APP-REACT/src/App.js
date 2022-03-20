@@ -12,6 +12,7 @@ function App() {
   })
 
   const [books, setBooks] = useState([])
+  const [ListUpdated, setListUpdated] = useState([false])
 
   useEffect(() => {
     const getBooks = () => {
@@ -20,7 +21,8 @@ function App() {
       .then(res => setBooks(res))
     }
     getBooks()
-    },[])
+    setListUpdated(false)
+    },[ListUpdated])
 
   return (
     <Fragment>
@@ -29,7 +31,7 @@ function App() {
         <div className="row">
           <div className="col-7">
             <h2 style={{textAlign: 'center'}}>Book List</h2>
-            <BookList books = {books} />
+            <BookList book={book} setBook={setBook} books = {books} setListUpdated={setListUpdated}/>
           </div>
           <div className="col-5">
             <h2 style={{textAlign: 'center'}}>Book Form</h2>
